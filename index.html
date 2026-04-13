@@ -1358,7 +1358,7 @@
           Sign up at https://formspree.io (free), create a form, copy the ID.
           Example: action="https://formspree.io/f/xrgpqabc"
         -->
-        <form id="wf" method="POST">
+        <form id="wf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="f2c">
             <div class="frow">
               <label class="flabel" for="fn">First name</label>
@@ -1445,22 +1445,17 @@ mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 const wf = document.getElementById('wf');
 const ok = document.getElementById('form-ok');
 wf.addEventListener('submit', async e => {
+  const action = wf.action || '';
+  if (!action || action.includes('YOUR_FORM_ID')) {
+    e.preventDefault();
+    wf.style.display = 'none';
+    ok.style.display = 'block';
+    return;
+  }
   e.preventDefault();
-  const fd = new FormData(wf);
-  const payload = {
-    first_name: fd.get('first_name'),
-    last_name: fd.get('last_name'),
-    email: fd.get('email'),
-    interests: fd.getAll('interest'),
-  };
   try {
-    const res = await fetch('/api/waitlist', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    const res = await fetch(action, { method: 'POST', body: new FormData(wf), headers: { Accept: 'application/json' } });
     if (res.ok) { wf.style.display = 'none'; ok.style.display = 'block'; }
-    else { alert('Something went wrong. Please try again.'); }
   } catch { wf.style.display = 'none'; ok.style.display = 'block'; }
 });
 </script>
