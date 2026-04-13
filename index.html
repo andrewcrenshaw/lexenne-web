@@ -425,8 +425,8 @@
       padding: 0.1rem 0.45rem;
       border-radius: var(--r-pill);
     }
-    .t-alpha { background: #fef3c7; color: #92400e; }
-    .t-dev   { background: #dbeafe; color: #1e40af; }
+    .t-alpha { background: rgba(14,31,61,0.07); color: var(--dark-surf); }
+    .t-dev   { background: rgba(0,154,181,0.10); color: var(--accent-deep); }
     .t-soon  { background: var(--surface-2); color: var(--muted); }
 
     /* ═══════════════════════════════════════════
@@ -502,13 +502,13 @@
     .pc:hover::before { opacity: 1; }
 
     /* Individual products */
-    .pc-strata::before  { background: linear-gradient(90deg, #6366f1, #818cf8); }
-    .pc-hearth::before  { background: linear-gradient(90deg, #ec4899, #f472b6); }
-    .pc-buyonce::before { background: linear-gradient(90deg, #059669, #34d399); }
+    .pc-strata::before  { background: linear-gradient(90deg, var(--accent), var(--accent-mid)); }
+    .pc-hearth::before  { background: linear-gradient(90deg, var(--dark), var(--dark-surf)); }
+    .pc-buyonce::before { background: linear-gradient(90deg, var(--accent-deep), var(--accent)); }
     /* Enterprise product */
     .pc-market::before  { background: linear-gradient(90deg, var(--accent), var(--accent-mid)); }
     .pc-market {
-      background: linear-gradient(145deg, var(--bg) 0%, #f0fdf4 100%);
+      background: linear-gradient(145deg, var(--bg) 0%, var(--accent-tint) 100%);
       border-color: rgba(0,154,181,0.15);
     }
     .pc-market:hover { border-color: transparent; }
@@ -527,13 +527,13 @@
       flex-shrink: 0;
     }
     .pc-icon svg { width: 22px; height: 22px; }
-    .ico-s { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
-    .ico-s svg { color: #4338ca; }
-    .ico-h { background: linear-gradient(135deg, #fce7f3, #f9a8d4); }
-    .ico-h svg { color: #be185d; }
-    .ico-b { background: linear-gradient(135deg, #d1fae5, #6ee7b7); }
-    .ico-b svg { color: #065f46; }
-    .ico-m { background: linear-gradient(135deg, #a0e6f4, #4dcfe0); }
+    .ico-s { background: linear-gradient(135deg, var(--accent-tint), rgba(0,154,181,0.18)); }
+    .ico-s svg { color: var(--accent); }
+    .ico-h { background: linear-gradient(135deg, rgba(14,31,61,0.06), rgba(14,31,61,0.13)); }
+    .ico-h svg { color: var(--dark-surf); }
+    .ico-b { background: linear-gradient(135deg, rgba(0,154,181,0.11), rgba(0,154,181,0.22)); }
+    .ico-b svg { color: var(--accent-h); }
+    .ico-m { background: linear-gradient(135deg, var(--accent-pale), var(--accent-mid)); }
     .ico-m svg { color: var(--accent-deep); }
 
     .pc-status {
@@ -547,8 +547,8 @@
       flex-shrink: 0;
       margin-top: 0.15rem;
     }
-    .s-alpha { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    .s-dev   { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+    .s-alpha { background: rgba(14,31,61,0.07); color: var(--dark-surf); border: 1px solid rgba(14,31,61,0.15); }
+    .s-dev   { background: rgba(0,154,181,0.10); color: var(--accent-deep); border: 1px solid rgba(0,154,181,0.22); }
     .s-soon  { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); }
     .s-ent   { background: var(--accent-pale); color: var(--accent-deep); border: 1px solid rgba(0,154,181,0.25); }
 
@@ -614,6 +614,141 @@
     }
     .pc-link:hover { gap: 0.55rem; }
     .pc-link svg { width: 12px; height: 12px; }
+
+    /* ═══════════════════════════════════════════
+       PRODUCT FAMILIES
+    ═══════════════════════════════════════════ */
+    .family-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .fc {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.22s var(--ease);
+    }
+    .fc::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .fc:hover { border-color: transparent; box-shadow: var(--s-lg); }
+    .fc-strata::before { background: linear-gradient(90deg, var(--accent), var(--accent-mid)); }
+    .fc-hearth::before  { background: linear-gradient(90deg, var(--dark), var(--dark-surf)); }
+
+    .fc-hdr { margin-bottom: 1.75rem; }
+    .fc-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .fc-icon svg { width: 22px; height: 22px; }
+    .fci-strata { background: linear-gradient(135deg, var(--accent-tint), rgba(0,154,181,0.18)); }
+    .fci-strata svg { color: var(--accent); }
+    .fci-hearth  { background: linear-gradient(135deg, rgba(14,31,61,0.06), rgba(14,31,61,0.13)); }
+    .fci-hearth svg { color: var(--dark-surf); }
+
+    /* Custom product icons (PNG) */
+    .fc-icon-img {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .fc-icon-img img { width: 48px; height: auto; display: block; }
+
+    .fc-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      color: var(--heading);
+      margin-bottom: 0.2rem;
+    }
+    .fc-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .fc-desc {
+      font-size: 0.875rem;
+      line-height: 1.72;
+      color: var(--body);
+    }
+
+    .sp-list { display: flex; flex-direction: column; flex: 1; }
+    .sp {
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .sp:last-child { border-bottom: 1px solid var(--border); margin-bottom: 1.25rem; }
+    .sp-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.3rem;
+    }
+    .sp-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--heading);
+    }
+    .sp-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+    .sp-desc {
+      font-size: 0.865rem;
+      line-height: 1.72;
+      color: var(--body);
+      margin-bottom: 0.75rem;
+    }
+
+    .flywheel {
+      background: var(--surface);
+      border: 1px solid var(--border-s);
+      border-radius: var(--r-md);
+      padding: 0.9rem 1.1rem;
+      margin-top: auto;
+    }
+    .fly-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .fly-txt {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--body);
+    }
+    .fc-foot {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 768px) { .family-grid { grid-template-columns: 1fr; } }
 
     /* ═══════════════════════════════════════════
        PRINCIPLES
@@ -712,7 +847,7 @@
       color: var(--accent-mid);
       transition: gap 0.18s var(--ease), color 0.18s;
     }
-    .about-link:hover { gap: 0.6rem; color: #a7f3d0; }
+    .about-link:hover { gap: 0.6rem; color: var(--accent-pale); }
     .about-link svg { width: 12px; height: 12px; }
 
     .stats { display: flex; flex-direction: column; gap: 0.875rem; }
@@ -821,7 +956,7 @@
     .form-ok { display: none; text-align: center; padding: 2rem 1rem; }
     .ok-ico {
       width: 48px; height: 48px;
-      background: #d1fae5;
+      background: rgba(0,154,181,0.12);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 1rem;
@@ -966,36 +1101,36 @@
         <a href="#waitlist" class="btn btn-sec btn-lg">Get early access</a>
       </div>
 
-      <!-- Product/audience chips -->
+      <!-- Product family chips -->
       <div class="aud-strip r d4">
         <span class="aud-label">Products</span>
         <div class="aud-chips">
           <a href="#products" class="aud-chip">
-            <div class="aud-chip-ico" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)">
-              <svg viewBox="0 0 10 10" fill="none" style="color:#4338ca"><circle cx="5" cy="3.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1 9.5c0-1.8 1.8-2.8 4-2.8s4 1 4 2.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <div class="aud-chip-ico" style="background:linear-gradient(135deg,var(--accent-tint),rgba(0,154,181,0.18))">
+              <svg viewBox="0 0 10 10" fill="none" style="color:var(--accent)"><circle cx="5" cy="3.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1 9.5c0-1.8 1.8-2.8 4-2.8s4 1 4 2.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             </div>
-            <span class="aud-chip-name">Strata</span>
+            <span class="aud-chip-name">Strata Work</span>
             <span class="aud-chip-tag t-alpha">Pre-alpha</span>
           </a>
           <a href="#products" class="aud-chip">
-            <div class="aud-chip-ico" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">
-              <svg viewBox="0 0 10 10" fill="none" style="color:#be185d"><path d="M5 1L9 4V9H6.5V6.5H3.5V9H1V4L5 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            <div class="aud-chip-ico" style="background:linear-gradient(135deg,var(--accent-pale),var(--accent-mid))">
+              <svg viewBox="0 0 10 10" fill="none" style="color:var(--accent-deep)"><path d="M2 7.5L5 1.5L8 7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 5.5h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             </div>
-            <span class="aud-chip-name">Hearth</span>
+            <span class="aud-chip-name">Strata Strategy</span>
             <span class="aud-chip-tag t-dev">In dev</span>
           </a>
           <a href="#products" class="aud-chip">
-            <div class="aud-chip-ico" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7)">
-              <svg viewBox="0 0 10 10" fill="none" style="color:#065f46"><rect x="1" y="2.5" width="8" height="6.5" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 2.5V2a2 2 0 014 0v.5M1 5h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <div class="aud-chip-ico" style="background:linear-gradient(135deg,rgba(14,31,61,0.06),rgba(14,31,61,0.13))">
+              <svg viewBox="0 0 10 10" fill="none" style="color:var(--dark-surf)"><rect x="1" y="2.5" width="8" height="6.5" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 2.5V2a2 2 0 014 0v.5M1 5h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             </div>
-            <span class="aud-chip-name">BuyOnce</span>
-            <span class="aud-chip-tag t-soon">Soon</span>
+            <span class="aud-chip-name">Hearth Keep</span>
+            <span class="aud-chip-tag t-dev">In dev</span>
           </a>
           <a href="#products" class="aud-chip">
-            <div class="aud-chip-ico" style="background:linear-gradient(135deg,#ccfbf1,#5eead4)">
-              <svg viewBox="0 0 10 10" fill="none" style="color:#007d96"><path d="M2 7.5L5 1.5L8 7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 5.5h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <div class="aud-chip-ico" style="background:linear-gradient(135deg,rgba(14,31,61,0.06),rgba(14,31,61,0.13))">
+              <svg viewBox="0 0 10 10" fill="none" style="color:var(--dark-surf)"><path d="M5 1L9 4V9H6.5V6.5H3.5V9H1V4L5 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             </div>
-            <span class="aud-chip-name">Market Intel</span>
+            <span class="aud-chip-name">Hearth Tend</span>
             <span class="aud-chip-tag t-dev">In dev</span>
           </a>
         </div>
@@ -1014,129 +1149,114 @@
   <div class="wrap">
 
     <div class="sh c">
-      <span class="label r">Product Portfolio</span>
-      <h2 class="r d1">Four products. Two markets.</h2>
-      <p class="r d2">AI handles the tedious, high-stakes information work. Humans make the final calls. That principle scales from individual careers to boardroom strategy.</p>
+      <span class="label r">Product Families</span>
+      <h2 class="r d1">Two families. One intelligence.</h2>
+      <p class="r d2">Each family shares a core analytical engine. The products within a family reinforce each other — same intelligence, applied at different scales.</p>
     </div>
 
-    <div class="products-grid">
+    <div class="family-grid">
 
-      <!-- Row 1 — Individual -->
-      <div class="seg-marker r">
-        <div class="seg-line"></div>
-        <span class="seg-txt">For individuals</span>
-        <div class="seg-line"></div>
+      <!-- ─── STRATA FAMILY ─── -->
+      <div class="fc fc-strata r d1">
+        <div class="fc-hdr">
+          <div class="fc-icon-img">
+            <img src="images/strata_icon.png" alt="Strata">
+          </div>
+          <div class="fc-name">Strata</div>
+          <div class="fc-tag">Understand the market. Position to win.</div>
+          <p class="fc-desc">Every market has a landscape — who's hiring and why, which competitors are gaining ground, where the real openings are. Strata reads that landscape with precision and translates it into a clear position: here is where you fit, here is how to present yourself, here is what to decide. At any scale.</p>
+        </div>
+
+        <div class="sp-list">
+          <div class="sp">
+            <div class="sp-hdr">
+              <span class="sp-name">Strata Work</span>
+              <span class="pc-status s-alpha">Pre-alpha</span>
+            </div>
+            <div class="sp-tagline">Compete for the right roles — and win them.</div>
+            <p class="sp-desc">Strata Work does the research most candidates skip. For every opportunity you pursue, it builds a company brief — differentiators, recent news, leadership backgrounds, hiring signals — and a targeted prep package: customized resume and cover letter, likely interview questions, and how to frame your experience to land. When gaps exist, it surfaces them and builds a roadmap to close them: training, projects, certifications. When you're ready to be found, it helps you build the articles and social presence that make your expertise visible to the companies you're targeting. You focus on the opportunities worth winning. Agents handle everything else.</p>
+            <div class="pc-pills">
+              <span class="pill">resume &amp; cover customization</span>
+              <span class="pill">interview prep</span>
+              <span class="pill">gap analysis</span>
+              <span class="pill">social profile building</span>
+            </div>
+          </div>
+          <div class="sp">
+            <div class="sp-hdr">
+              <span class="sp-name">Strata Strategy</span>
+              <span class="pc-status s-dev">In development</span>
+            </div>
+            <div class="sp-tagline">Intelligence that remembers. Decisions that compound.</div>
+            <p class="sp-desc">Every CI tool on the market collects signals and sends alerts. None of them remember what you decided, why you decided it, or what happened next. Strata Strategy does. Each strategic decision is logged with its context, the signals that triggered it, and the outcome — so the system learns what works for your specific organization and market. By month six it recognizes patterns. By month twelve, your institutional intelligence is irreplaceable: a queryable record of every call your team made and why, getting sharper with every decision. Not a dashboard. A compounding strategic advantage.</p>
+            <div class="pc-pills">
+              <span class="pill">decision traces</span>
+              <span class="pill">compounding intelligence</span>
+              <span class="pill">competitive monitoring</span>
+              <span class="pill">strategic briefings</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flywheel">
+          <span class="fly-label">The Strata flywheel</span>
+          <p class="fly-txt">Understanding what companies look for sharpens the models that help organizations see their own market from the other side. Individual signal and enterprise intelligence compound each other.</p>
+        </div>
+
+        <div class="fc-foot">
+          <a href="#waitlist" class="pc-link">Get early access <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
       </div>
 
-      <!-- Strata -->
-      <div class="pc pc-strata r d1">
-        <div class="pc-top">
-          <div class="pc-icon ico-s">
-            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="8" r="4"/>
-              <path d="M3 20c0-4 3.6-6 8-6s8 2 8 6"/>
-            </svg>
+      <!-- ─── HEARTH FAMILY ─── -->
+      <div class="fc fc-hearth r d2">
+        <div class="fc-hdr">
+          <div class="fc-icon-img">
+            <img src="images/hearth_icon.png" alt="Hearth">
           </div>
-          <span class="pc-status s-alpha">Pre-alpha</span>
+          <div class="fc-name">Hearth</div>
+          <div class="fc-tag">Own it. Know it. Pass it on.</div>
+          <p class="fc-desc">Households generate an enormous amount of information — what you own, who services it, when it was last maintained, what it cost, who needs it next. Nobody built a good place to put all of it. Hearth manages the full lifecycle of ownership: from what comes into your home, to how it's cared for, to the moment it finds its next owner — with its story intact.</p>
         </div>
-        <div class="pc-aud">Individual · Career</div>
-        <div class="pc-name">Strata</div>
-        <div class="pc-tag">Your career, strategically managed.</div>
-        <p class="pc-desc">Eight specialized agents collaborate daily to scrape target company career pages, score opportunities against your profile with vector similarity and LLM reasoning, and surface only the matches worth your attention — with full reasoning. You review and apply. Agents never submit on your behalf.</p>
-        <div class="pc-pills">
-          <span class="pill">8 agents</span>
-          <span class="pill">pgvector matching</span>
-          <span class="pill">3-layer dedup</span>
-          <span class="pill">$10–36/mo</span>
-        </div>
-        <div class="pc-foot">
-          <a href="#waitlist" class="pc-link">Request early access <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
 
-      <!-- Hearth -->
-      <div class="pc pc-hearth r d2">
-        <div class="pc-top">
-          <div class="pc-icon ico-h">
-            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 10.5L11 3L19 10.5V20H14V15H8V20H3V10.5Z"/>
-            </svg>
+        <div class="sp-list">
+          <div class="sp">
+            <div class="sp-hdr">
+              <span class="sp-name">Hearth Keep</span>
+              <span class="pc-status s-dev">In development</span>
+            </div>
+            <div class="sp-tagline">Buy less. Gift better. Give things a second life.</div>
+            <p class="sp-desc">A trusted network for intentional ownership. Before anything is purchased, Hearth Keep asks: does someone in your trusted circle already have this? Rehoming within your network comes first — matched by life stage, needs, and what people actually want. When a purchase makes sense, durability guidance steers you toward things that last, with explicit reasoning. Group gifting and pooling for life moments: graduation, first home, new baby, downsizing. When something moves on, the care record from Hearth Tend travels with it — so the next owner knows exactly what they're getting.</p>
+            <div class="pc-pills">
+              <span class="pill">rehome-first matching</span>
+              <span class="pill">trusted gifting circles</span>
+              <span class="pill">durability guidance</span>
+              <span class="pill">provenance transfer</span>
+            </div>
           </div>
-          <span class="pc-status s-dev">In development</span>
+          <div class="sp">
+            <div class="sp-hdr">
+              <span class="sp-name">Hearth Tend</span>
+              <span class="pc-status s-dev">In development</span>
+            </div>
+            <div class="sp-tagline">Everything your home is. Everything it needs.</div>
+            <p class="sp-desc">Every appliance, vehicle, home system, and piece of equipment — tracked with purchase dates, warranties, manuals, and receipts. Service contacts linked to the things they service ("always ask for Mike at Firestone"). Contextual reminders that know what needs what and when: oil change in 800 miles, Lily's flu shot this fall, Luna's rabies booster in March. Home projects with budgets and contractors. Utility costs in one view. Shared with everyone in your household who needs to know. Privacy-first. Runs locally.</p>
+            <div class="pc-pills">
+              <span class="pill">asset registry</span>
+              <span class="pill">contextual reminders</span>
+              <span class="pill">service history</span>
+              <span class="pill">household sharing</span>
+            </div>
+          </div>
         </div>
-        <div class="pc-aud">Individual · Home &amp; Family</div>
-        <div class="pc-name">Hearth</div>
-        <div class="pc-tag">Your home, proactively managed.</div>
-        <p class="pc-desc">A privacy-first hub that unifies home assets, family logistics, maintenance schedules, documents, and subscriptions. AI surfaces what needs attention before problems occur — and handles what doesn't require your judgment. Runs locally; no cloud vendor lock-in.</p>
-        <div class="pc-pills">
-          <span class="pill">local-first</span>
-          <span class="pill">privacy-first</span>
-          <span class="pill">proactive AI</span>
-          <span class="pill">family hub</span>
+
+        <div class="flywheel">
+          <span class="fly-label">The Hearth flywheel</span>
+          <p class="fly-txt">Hearth Tend builds the care record. Hearth Keep uses it to match what you're passing on to someone who needs it — and sends the full history along. The longer you use it, the richer every transfer becomes.</p>
         </div>
-        <div class="pc-foot">
+
+        <div class="fc-foot">
           <a href="#waitlist" class="pc-link">Join the waitlist <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
-
-      <!-- BuyOnce -->
-      <div class="pc pc-buyonce r d1">
-        <div class="pc-top">
-          <div class="pc-icon ico-b">
-            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="7" width="16" height="13" rx="2"/>
-              <path d="M7 7V5a5 5 0 0110 0v2"/>
-              <path d="M11 12v4M9 14h4"/>
-            </svg>
-          </div>
-          <span class="pc-status s-soon">Coming soon</span>
-        </div>
-        <div class="pc-aud">Individual · Consumer</div>
-        <div class="pc-name">BuyOnce</div>
-        <div class="pc-tag">Your spending, made intentional.</div>
-        <p class="pc-desc">Tracks what you own, prevents duplicate purchases before they happen, surfaces zombie subscriptions you're no longer using, and provides buy-vs-own economics with real data. The deduplication engine that powers Strata — applied to your household.</p>
-        <div class="pc-pills">
-          <span class="pill">duplicate detection</span>
-          <span class="pill">subscription hygiene</span>
-          <span class="pill">buy-vs-rent</span>
-        </div>
-        <div class="pc-foot">
-          <a href="#waitlist" class="pc-link">Stay informed <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
-
-      <!-- Row 2 — Enterprise -->
-      <div class="seg-marker r">
-        <div class="seg-line"></div>
-        <span class="seg-txt">For organizations</span>
-        <div class="seg-line"></div>
-      </div>
-
-      <!-- Market Intelligence -->
-      <div class="pc pc-market r d2" style="grid-column: 1 / -1; max-width: 560px; justify-self: center; width: 100%;">
-        <div class="pc-top">
-          <div class="pc-icon ico-m">
-            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 16L7 9L12 13L17 6"/>
-              <circle cx="19" cy="5" r="2"/>
-              <path d="M2 20h18"/>
-            </svg>
-          </div>
-          <span class="pc-status s-ent">In development</span>
-        </div>
-        <div class="pc-aud">Enterprise · Strategy &amp; Executive Teams</div>
-        <div class="pc-name">Market Intelligence Agent</div>
-        <div class="pc-tag">Your market, always in view.</div>
-        <p class="pc-desc">Continuous intelligence on competitive dynamics, market signals, emerging threats, and strategic opportunities — synthesized for executive decision-making. Built on the same governed multi-agent architecture as Strata, tuned for market analysis at enterprise scale. Delivers structured weekly and real-time strategic digests, not dashboards nobody reads.</p>
-        <div class="pc-pills">
-          <span class="pill">competitive monitoring</span>
-          <span class="pill">market signals</span>
-          <span class="pill">strategic synthesis</span>
-          <span class="pill">executive digest</span>
-          <span class="pill">CEO · Strategy · CorpDev</span>
-        </div>
-        <div class="pc-foot">
-          <a href="#waitlist" class="pc-link">Request enterprise access <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -1241,10 +1361,10 @@
         <p class="r d2">Lexenne products are in active development. Join the list to get early access, product updates, and the occasional note from Andrew on what we're learning as we build.</p>
         <p class="fine r d2">No spam. Unsubscribe any time. Your email goes only to Andrew.</p>
         <div class="ppills r d3">
-          <span class="ppill" style="background:#e0e7ff;border-color:#a5b4fc;color:#3730a3;">Strata</span>
-          <span class="ppill" style="background:#fce7f3;border-color:#f9a8d4;color:#be185d;">Hearth</span>
-          <span class="ppill" style="background:#d1fae5;border-color:#6ee7b7;color:#065f46;">BuyOnce</span>
-          <span class="ppill" style="background:var(--accent-pale);border-color:#4dcfe0;color:var(--accent-deep);">Market Intel</span>
+          <span class="ppill" style="background:rgba(0,154,181,0.10);border-color:rgba(0,154,181,0.28);color:var(--accent-deep);">Strata Work</span>
+          <span class="ppill" style="background:var(--accent-pale);border-color:rgba(0,154,181,0.40);color:var(--accent-deep);">Strata Strategy</span>
+          <span class="ppill" style="background:rgba(14,31,61,0.07);border-color:rgba(14,31,61,0.18);color:var(--dark-surf);">Hearth Keep</span>
+          <span class="ppill" style="background:rgba(14,31,61,0.07);border-color:rgba(14,31,61,0.18);color:var(--dark-surf);">Hearth Tend</span>
         </div>
       </div>
 
@@ -1285,7 +1405,7 @@
         <div class="form-ok" id="form-ok">
           <div class="ok-ico">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M5 11L9 15L17 7" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 11L9 15L17 7" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <h3>You're on the list.</h3>
