@@ -793,10 +793,10 @@
     .ptxt p { font-size: 0.875rem; line-height: 1.72; color: var(--body); }
 
     /* ═══════════════════════════════════════════
-       ABOUT — dark section
+       FOUNDATION — dark section
     ═══════════════════════════════════════════ */
-    #about { background: var(--dark); position: relative; overflow: hidden; }
-    #about::before {
+    #foundation { background: var(--dark); position: relative; overflow: hidden; }
+    #foundation::before {
       content: '';
       position: absolute;
       width: 700px; height: 700px;
@@ -804,7 +804,7 @@
       background: radial-gradient(ellipse, rgba(0,154,181,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
-    #about::after {
+    #foundation::after {
       content: '';
       position: absolute;
       width: 400px; height: 400px;
@@ -819,6 +819,11 @@
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: center;
+    }
+    .fdn-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
     }
     .about-copy .label { color: var(--accent); margin-bottom: 0.75rem; }
     .about-copy h2 {
@@ -836,7 +841,7 @@
       color: var(--dark-body);
       margin-bottom: 0.875rem;
     }
-    .about-copy p:last-of-type { margin-bottom: 1.75rem; }
+    .about-copy p:last-of-type { margin-bottom: 0; }
     .about-link {
       display: inline-flex;
       align-items: center;
@@ -1314,30 +1319,13 @@
 ═══════════════════════════════════════════ -->
 <section id="foundation" class="sec">
   <div class="wrap">
-    <div class="about-g">
+    <div class="fdn-inner">
       <div class="about-copy">
         <span class="label r">Engineering Foundation</span>
         <h2 class="r d1">Production-grade AI.<br><em>Built to compound.</em></h2>
         <p class="r d2">Lexenne products run on governed multi-agent orchestration — purpose-built, not assembled from off-the-shelf components. Each specialist agent operates within defined scope, cost bounds, and observability constraints. Consequential outputs require human confirmation before any action is taken.</p>
         <p class="r d3">Two persistent memory systems underlie every product: Living Memory maintains user context, preferences, and workspace state across sessions. Alexandria captures structured knowledge — decisions, patterns, rationale — that compounds rather than evaporates. The longer the system runs, the more precisely it models what matters.</p>
-      </div>
-      <div class="stats">
-        <div class="stat r d1">
-          <div class="stat-n">8+</div>
-          <div class="stat-l"><strong>Specialist agents per product</strong>Each scoped, governed, cost-bounded, and observable</div>
-        </div>
-        <div class="stat r d2">
-          <div class="stat-n">2</div>
-          <div class="stat-l"><strong>Persistent memory systems</strong>Living Memory &amp; Alexandria — knowledge that compounds, not resets</div>
-        </div>
-        <div class="stat r d3">
-          <div class="stat-n">0</div>
-          <div class="stat-l"><strong>Silent consequential actions</strong>Human gate required for every high-stakes output, always</div>
-        </div>
-        <div class="stat r d4">
-          <div class="stat-n">25+</div>
-          <div class="stat-l"><strong>Years of enterprise systems thinking</strong>Financial services, EdTech, and digital platforms — production at scale</div>
-        </div>
+        <p class="r d4">The orchestration layer manages each task's full lifecycle: decomposition, specialist routing, output consolidation, and quality gate — before any result surfaces to the user. Decisions carry traces. Every output has an auditable path from question to answer that can be reviewed and challenged. That traceability is what makes AI-assisted work trustworthy in high-stakes domains.</p>
       </div>
     </div>
   </div>
@@ -1370,7 +1358,7 @@
           Sign up at https://formspree.io (free), create a form, copy the ID.
           Example: action="https://formspree.io/f/xrgpqabc"
         -->
-        <form id="wf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="wf" method="POST">
           <div class="f2c">
             <div class="frow">
               <label class="flabel" for="fn">First name</label>
@@ -1457,17 +1445,22 @@ mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 const wf = document.getElementById('wf');
 const ok = document.getElementById('form-ok');
 wf.addEventListener('submit', async e => {
-  const action = wf.action || '';
-  if (!action || action.includes('YOUR_FORM_ID')) {
-    e.preventDefault();
-    wf.style.display = 'none';
-    ok.style.display = 'block';
-    return;
-  }
   e.preventDefault();
+  const fd = new FormData(wf);
+  const payload = {
+    first_name: fd.get('first_name'),
+    last_name: fd.get('last_name'),
+    email: fd.get('email'),
+    interests: fd.getAll('interest'),
+  };
   try {
-    const res = await fetch(action, { method: 'POST', body: new FormData(wf), headers: { Accept: 'application/json' } });
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
     if (res.ok) { wf.style.display = 'none'; ok.style.display = 'block'; }
+    else { alert('Something went wrong. Please try again.'); }
   } catch { wf.style.display = 'none'; ok.style.display = 'block'; }
 });
 </script>
